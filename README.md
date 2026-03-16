@@ -158,3 +158,33 @@ curl -X POST http://localhost:8000/api/v1/payments/create-order \
 
 - Replace provider stubs with live credentials.
 - Configure Google Maps API key in frontend env for live map tiles.
+
+## Running in GitHub Codespaces
+
+If ports are not being auto-forwarded, run backend from the repository root using one of these commands:
+
+```bash
+bash scripts/dev.sh
+# or
+cd backend && uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+### Codespaces verification commands
+
+```bash
+pwd
+python --version
+cd backend
+python -c "import app.main; print('import-ok')"
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+Expected:
+- Terminal prints `Uvicorn running on http://0.0.0.0:8000`
+- Codespaces **PORTS** shows `8000` as forwarded.
+
+If you start from repo root without changing directories, use:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --app-dir backend
+```

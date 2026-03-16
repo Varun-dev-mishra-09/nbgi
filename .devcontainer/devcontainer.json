@@ -1,0 +1,11 @@
+{
+  "name": "NGBI Codespace",
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "label": "NGBI FastAPI",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postStartCommand": "nohup bash scripts/dev.sh > /tmp/ngbi-backend.log 2>&1 &"
+}
