@@ -213,6 +213,7 @@ This project now handles:
 - `https://nbgi-tau.vercel.app/admin`
 - `https://nbgi-tau.vercel.app/conductor`
 - `https://nbgi-tau.vercel.app/docs` (reverse-proxied to `https://nbgi.onrender.com/docs`)
+- `https://nbgi-tau.vercel.app/openapi.json` (reverse-proxied OpenAPI schema used by Swagger UI)
 
 ### Verify after deployment
 
@@ -223,3 +224,9 @@ curl -I https://nbgi-tau.vercel.app/conductor
 curl -I https://nbgi-tau.vercel.app/docs
 curl -I https://nbgi-tau.vercel.app/api/v1/healthz
 ```
+
+
+### Important for Swagger behind proxy
+
+- Keep FastAPI `docs_url=/docs` and `openapi_url=/openapi.json`.
+- Ensure Vercel rewrites include both `/openapi.json` and `/api/v1/openapi.json` to avoid 404s from proxied Swagger clients.

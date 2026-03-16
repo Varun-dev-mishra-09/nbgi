@@ -13,8 +13,20 @@
       "destination": "https://nbgi.onrender.com/docs/:path*"
     },
     {
+      "source": "/redoc",
+      "destination": "https://nbgi.onrender.com/redoc"
+    },
+    {
       "source": "/openapi.json",
       "destination": "https://nbgi.onrender.com/openapi.json"
+    },
+    {
+      "source": "/api/v1/openapi.json",
+      "destination": "https://nbgi.onrender.com/openapi.json"
+    },
+    {
+      "source": "/docs/oauth2-redirect",
+      "destination": "https://nbgi.onrender.com/docs/oauth2-redirect"
     }
   ]
 }
