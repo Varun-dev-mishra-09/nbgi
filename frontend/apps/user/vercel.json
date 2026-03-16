@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://nbgi.onrender.com/api/:path*"
+    },
+    {
+      "source": "/docs",
+      "destination": "https://nbgi.onrender.com/docs"
+    },
+    {
+      "source": "/docs/:path*",
+      "destination": "https://nbgi.onrender.com/docs/:path*"
+    },
+    {
+      "source": "/openapi.json",
+      "destination": "https://nbgi.onrender.com/openapi.json"
+    }
+  ]
+}

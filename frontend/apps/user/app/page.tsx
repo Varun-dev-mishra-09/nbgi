@@ -1,1 +1,5 @@
-export default function Page() { return <div className='p-6'>NGBI User Portal</div>; }
+import { redirect } from 'next/navigation';
+
+export default function HomePage() {
+  redirect('/user');
+}

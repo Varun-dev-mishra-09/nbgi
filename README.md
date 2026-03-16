@@ -188,3 +188,38 @@ If you start from repo root without changing directories, use:
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --app-dir backend
 ```
+
+
+## Vercel + Render integration (single frontend domain)
+
+Use **one Vercel project** with root directory set to `frontend/apps/user`.
+
+This project now handles:
+- `/user` (user portal UI)
+- `/admin` (admin portal UI route)
+- `/conductor` (conductor portal UI route)
+- `/api/*` proxied to Render backend
+- `/docs` proxied to Render FastAPI Swagger
+
+### Required Vercel settings
+
+- Framework preset: Next.js
+- Root directory: `frontend/apps/user`
+- Env var: `NEXT_PUBLIC_API_BASE_URL=/api/v1`
+
+### Route behavior
+
+- `https://nbgi-tau.vercel.app/user`
+- `https://nbgi-tau.vercel.app/admin`
+- `https://nbgi-tau.vercel.app/conductor`
+- `https://nbgi-tau.vercel.app/docs` (reverse-proxied to `https://nbgi.onrender.com/docs`)
+
+### Verify after deployment
+
+```bash
+curl -I https://nbgi-tau.vercel.app/user
+curl -I https://nbgi-tau.vercel.app/admin
+curl -I https://nbgi-tau.vercel.app/conductor
+curl -I https://nbgi-tau.vercel.app/docs
+curl -I https://nbgi-tau.vercel.app/api/v1/healthz
+```
